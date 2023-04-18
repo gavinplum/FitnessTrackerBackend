@@ -8,3 +8,5 @@ const client = new Pool({
 });
 
 module.exports = client;
+
+//'postgres://localhost:5432/fitness-dev';
