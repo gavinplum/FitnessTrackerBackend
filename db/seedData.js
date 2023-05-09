@@ -19,12 +19,15 @@ async function dropTables() {
   } catch (error) {
     throw error; 
   }
+
+  // drop all tables, in the correct order
 }
  
 
 async function createTables() {
   try {
     console.log("Starting to build tables...")
+    // create all tables, in the correct order
 
     await  client.query(`
       CREATE TABLE users(

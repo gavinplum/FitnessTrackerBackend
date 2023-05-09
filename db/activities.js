@@ -2,6 +2,7 @@ const client = require("./client")
 
 // database functions
 async function getAllActivities(){
+   // return the new activity
   try {
     const {rows} = await client.query(`
       SELECT * FROM activities;
@@ -13,6 +14,7 @@ async function getAllActivities(){
 }
 
 async function getActivityById(id){
+  // select and return an array of all activities
   try {
     const {rows: [activity]} = await client.query(`
       SELECT * FROM activities
@@ -76,10 +78,15 @@ async function createActivity({ name, description }){
 // return the new activity
 
 async function updateActivity({ id, ...fields }) {
+   // don't try to update the id
+  // do update the name and description
+  // return the updated activity
+  // build the set string
   try {
     const setString = Object.keys(fields)
       .map((key, index) => `"${key}"=$${index + 1}`)
       .join(", ");
+      // return early if this is called without fields
     if (setString.length > 0) {
       const {
         rows: [activity],
